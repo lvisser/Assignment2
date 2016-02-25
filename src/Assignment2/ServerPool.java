@@ -13,8 +13,14 @@ import java.util.ArrayList;
  */
 public class ServerPool {
     ArrayList activeTasks; // Used to store all active tasks of a server pool
+    int serverID;
 
-    public ServerPool() {
+    /**
+     *
+     * @param id
+     */
+    public ServerPool(int id) {
         this.activeTasks = new ArrayList<>();
+        this.serverID = id;
     }
 }
