@@ -10,5 +10,5 @@ package Assignment2;
  * @author Leroy
  */
 public class Dispatcher {
-    int test;
+
 }
