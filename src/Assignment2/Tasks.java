@@ -4,18 +4,29 @@
  * and open the template in the editor.
  */
 package Assignment2;
+
 /**
  *
  * @author Leroy
  */
 class Tasks {
+
     int exeTime;
     int taskID;
     boolean finished;
-    
-    public Tasks(int id){
+
+    public Tasks(int id) {
         this.taskID = id;
         this.exeTime = 0;// Moet exp verdeeld met mean 1 tijd worden
         this.finished = false;
+    }
+
+    public void time() {
+        if (!finished) {
+            exeTime = -1;
+            if (exeTime <= 0) {
+                finished = true;
+            }
+        }
     }
 }
