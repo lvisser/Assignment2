@@ -6,6 +6,7 @@
 package Assignment2;
 
 import java.util.ArrayList;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -17,21 +18,40 @@ public class Dispatcher {
     ArrayList serverPool;
     int dispatcherID;
 
-    public Dispatcher(int id, int serverPool) {
+    public Dispatcher(int id, int serverpool) {
         this.dispatcherID = id;
 
-        for (int i = 0; i < serverPool; i++) {
+        for (int i = 0; i < serverpool; i++) {
             this.serverPool.add(new ServerPool(i));
         }
     }
 
-    public void selectServerPool(Tasks t) {
-        int selectedServer;
-        int activeTasks;
-        for (int i = 0; i < serverPool.size(); i++) {
-            if
+    int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
 
+    public void powerOfD(Tasks t, int d) {
+        ArrayList array = new ArrayList<>(serverPool);
+
+        for (int i = 0; i < serverPool.size() - d; i++) {
+            array.remove(randomWithRange(0, array.size()));
         }
+        // Now we have an array of size d left
+        int lActive = Integer.MAX_VALUE;
+        ServerPool selectedSP = null;
+        for (int i = 0; i < array.size(); i++) {
+            //selects serverpool with id i
+            ServerPool sP = (ServerPool) array.get(i);
+            int active = sP.size();
+
+            if (active < lActive) {
+                selectedSP = sP;
+                lActive = active;
+            }
+        }
+        
+        selectedSP.addSP(t); // Nullpointer gaat nooit gebeuren tenzij array size 0 heeft.
 
     }
 }

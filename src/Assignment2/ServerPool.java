@@ -23,4 +23,13 @@ public class ServerPool {
         this.activeTasks = new ArrayList<>();
         this.serverID = id;
     }
+    
+    public Integer size(){
+        return this.activeTasks.size();
+    }
+
+    public void addSP(Tasks t){
+        this.activeTasks.add(t);
+    }
+    
 }
